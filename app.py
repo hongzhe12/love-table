@@ -42,6 +42,11 @@ class MyMainWindow(QMainWindow):
         # 读取历史记录
         self.load_last_opened_file()
 
+        # 连接菜单事件
+        self.ui.action_3.triggered.connect(self.tutorial)
+        self.ui.action_4.triggered.connect(self.plug_in)
+        self.ui.action_5.triggered.connect(self.open_group_chat)
+        self.ui.action_6.triggered.connect(self.open_last_download)
 
     def update_mode(self):
         """根据复选框的选中状态更新处理模式"""
@@ -256,6 +261,29 @@ class MyMainWindow(QMainWindow):
         last_opened_file = settings.value("last_opened_file", "")
         if last_opened_file:
             self.open_file(last_opened_file)
+
+    def open_group_chat(self):
+        # 打开交流群网页链接
+        url = QUrl(
+            "http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=2dMalAAHkxATXq_4kjiYVaGsCmUpX41R&authKey=fxzHco4OmBhTuv7U8OkR2shsR1UAHQ8PDLVxq6eevxGRehARVkIC%2BlYKeB1zJgP3&noverify=0&group_code=676860109")
+        QDesktopServices.openUrl(url)
+        QMessageBox.information(self, "提示", "如果跳转失败，请手动加入，QQ群号：676860109")
+
+    def open_last_download(self):
+        # 打开下载链接
+        url = QUrl("https://wwpq.lanzouq.com/b004i14qgb")
+        QDesktopServices.openUrl(url)
+        QMessageBox.information(self, "提示", "密码：666")
+
+    def tutorial(self):
+        # 打开教程链接
+        url = QUrl("https://www.yuque.com/u26095674/yf6ir9/pym6rvoing10uqz2")
+        QDesktopServices.openUrl(url)
+
+    def plug_in(self):
+        # 打开插件链接
+        url = QUrl("https://www.yuque.com/u26095674/yf6ir9/ma481knf1kwmf920?singleDoc")
+        QDesktopServices.openUrl(url)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
