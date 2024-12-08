@@ -16,9 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHeaderView, QMainWindow,
-    QMenu, QMenuBar, QSizePolicy, QStatusBar,
-    QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout,
+    QHeaderView, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QStatusBar, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -43,10 +44,38 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tableWidget = QTableWidget(self.centralwidget)
         self.tableWidget.setObjectName(u"tableWidget")
 
-        self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
+        self.verticalLayout.addWidget(self.tableWidget)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.checkBox = QCheckBox(self.centralwidget)
+        self.checkBox.setObjectName(u"checkBox")
+        self.checkBox.setMinimumSize(QSize(111, 19))
+        self.checkBox.setChecked(True)
+
+        self.horizontalLayout.addWidget(self.checkBox)
+
+        self.checkBox_2 = QCheckBox(self.centralwidget)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+        self.checkBox_2.setMinimumSize(QSize(111, 19))
+
+        self.horizontalLayout.addWidget(self.checkBox_2)
+
+        self.pushButton = QPushButton(self.centralwidget)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout.addWidget(self.pushButton)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+
+        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -88,6 +117,9 @@ class Ui_MainWindow(object):
         self.action_4.setText(QCoreApplication.translate("MainWindow", u"\u63d2\u4ef6\u4e2d\u5fc3", None))
         self.action_5.setText(QCoreApplication.translate("MainWindow", u"\u4ea4\u6d41\u7fa4", None))
         self.action_6.setText(QCoreApplication.translate("MainWindow", u"\u6700\u65b0\u8f6f\u4ef6\u4e0b\u8f7d", None))
+        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u9010\u5355\u5143\u683c\u5904\u7406", None))
+        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"\u4e00\u6b21\u6027\u5904\u7406", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u91cd\u7f6e\u8868\u683c", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6", None))
         self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\u5de5\u5177", None))
         self.menu_3.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u6863\u4e0e\u5e2e\u52a9", None))
