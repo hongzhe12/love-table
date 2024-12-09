@@ -1,13 +1,16 @@
+import importlib.util
 import subprocess
 import sys
-import os
+
 import pandas as pd
+import wmi
+from PySide6.QtCore import QSettings, QUrl
 from PySide6.QtGui import QDesktopServices
-from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QMainWindow, QApplication
-from PySide6.QtCore import QSettings, Qt, QUrl, QCoreApplication
-import importlib.util
+from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QMainWindow, QApplication, QWidget
 
 from ui_form import Ui_MainWindow
+from functools import partial
+import resources_rc
 
 def check_and_install_dependencies(libraries):
     """检查并安装缺少的依赖库"""
@@ -16,6 +19,49 @@ def check_and_install_dependencies(libraries):
             __import__(library)
         except ImportError:
             subprocess.check_call([sys.executable, "-m", "pip", "install", library])
+
+
+def get_windows_system_info():
+    info_str = ""
+    try:
+        c = wmi.WMI()
+
+        # 获取操作系统基本信息
+        os_info = c.Win32_OperatingSystem()[0]
+        info_str += f"操作系统名称: {os_info.Name}\n"
+        info_str += f"操作系统版本: {os_info.Version}\n"
+        info_str += f"操作系统制造商: {os_info.Manufacturer}\n"
+        info_str += f"操作系统安装日期: {os_info.InstallDate}\n"
+
+        # 获取计算机系统信息
+        computer_system = c.Win32_ComputerSystem()[0]
+        info_str += f"计算机名称: {computer_system.Name}\n"
+        info_str += f"计算机制造商: {computer_system.Manufacturer}\n"
+        info_str += f"计算机型号: {computer_system.Model}\n"
+
+        # 获取CPU信息
+        for cpu in c.Win32_Processor():
+            info_str += f"CPU名称: {cpu.Name}\n"
+            info_str += f"CPU核心数: {cpu.NumberOfCores}\n"
+            info_str += f"CPU线程数: {cpu.ThreadCount}\n"
+
+        # 获取内存信息
+        total_memory = 0
+        for memory in c.Win32_PhysicalMemory():
+            total_memory += int(memory.Capacity)
+        info_str += f"总内存容量: {total_memory / 1024 / 1024 / 1024}GB\n"
+
+        # 获取磁盘信息
+        disk_info = ""
+        for disk in c.Win32_DiskDrive():
+            disk_info += f"磁盘型号: {disk.Model}\n"
+            disk_info += f"磁盘容量: {int(disk.Size) / 1024 / 1024 / 1024}GB\n"
+        info_str += f"磁盘信息:\n{disk_info}"
+
+    except Exception as e:
+        info_str += f"获取系统信息时出现错误: {e}"
+    info_str = "\n\n".join(info_str.split('\n'))
+    return info_str
 
 class MyMainWindow(QMainWindow):
     def __init__(self):
@@ -47,6 +93,42 @@ class MyMainWindow(QMainWindow):
         self.ui.action_4.triggered.connect(self.plug_in)
         self.ui.action_5.triggered.connect(self.open_group_chat)
         self.ui.action_6.triggered.connect(self.open_last_download)
+
+
+        # 绑定功能菜单按钮
+        self.list_windows = MyWidget()
+        self.ui.pushButton_2.clicked.connect(self.list_windows.show)
+
+        # 绑定按钮和事件
+        self.list_windows.ui.pushButton_1.clicked.connect(partial(self.apply_function_from_file,"1.py"))
+        self.list_windows.ui.pushButton_2.clicked.connect(partial(self.apply_function_from_file,"2.py"))
+        # self.list_windows.ui.pushButton_3.clicked.connect(partial(self.apply_function_from_file,"3.py"))
+        # self.list_windows.ui.pushButton_4.clicked.connect(partial(self.apply_function_from_file,"4.py"))
+        # self.list_windows.ui.pushButton_5.clicked.connect(partial(self.apply_function_from_file,"5.py"))
+        # self.list_windows.ui.pushButton_6.clicked.connect(partial(self.apply_function_from_file,"6.py"))
+
+        self.list_windows.ui.pushButton_1.clicked.connect(self.list_windows.hide)
+        self.list_windows.ui.pushButton_2.clicked.connect(self.list_windows.hide)
+        self.list_windows.ui.pushButton_3.clicked.connect(self.list_windows.hide)
+        self.list_windows.ui.pushButton_4.clicked.connect(self.list_windows.hide)
+        self.list_windows.ui.pushButton_5.clicked.connect(self.list_windows.hide)
+        self.list_windows.ui.pushButton_6.clicked.connect(self.list_windows.hide)
+
+        # 绑定界面切换事件
+        self.ui.pushButton_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.pushButton_4.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
+        self.ui.pushButton_5.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
+        self.ui.pushButton_6.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(3))
+
+        # 获取系统信息
+        sys_info = get_windows_system_info()
+        self.ui.label.setText(sys_info)
+        self.ui.pushButton_7.clicked.connect(self.copy_sys_info)
+
+    def copy_sys_info(self):
+        clipboard = QApplication.clipboard()
+        text_to_copy = self.ui.label.text()
+        clipboard.setText(text_to_copy)
 
     def update_mode(self):
         """根据复选框的选中状态更新处理模式"""
@@ -139,9 +221,13 @@ class MyMainWindow(QMainWindow):
         self.ui.tableWidget.setRowCount(df.shape[0])
         self.ui.tableWidget.setColumnCount(df.shape[1])
 
+        # 设置水平表头标签（使用DataFrame的列名）
+        self.ui.tableWidget.setHorizontalHeaderLabels(list(df.columns))
+
         for row in range(df.shape[0]):
             for col in range(df.shape[1]):
                 self.ui.tableWidget.setItem(row, col, QTableWidgetItem(str(df.iloc[row, col])))
+        self.ui.tableWidget.resizeColumnsToContents()
 
     def export_file(self):
         file_path, _ = QFileDialog.getSaveFileName(
@@ -284,6 +370,16 @@ class MyMainWindow(QMainWindow):
         # 打开插件链接
         url = QUrl("https://www.yuque.com/u26095674/yf6ir9/ma481knf1kwmf920?singleDoc")
         QDesktopServices.openUrl(url)
+
+
+
+from ui_list import Ui_Form
+
+class MyWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
