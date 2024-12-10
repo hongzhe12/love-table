@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(770, 541)
+        MainWindow.resize(797, 567)
         icon = QIcon()
         icon.addFile(u":/icons/images/logo.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
@@ -50,73 +50,26 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.pushButton_3 = QPushButton(self.centralwidget)
         self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMinimumSize(QSize(200, 50))
+        self.pushButton_3.setMinimumSize(QSize(180, 50))
         font = QFont()
-        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
-        font.setPointSize(10)
+        font.setFamilies([u"\u65b9\u6b63\u7c97\u9ed1\u5b8b\u7b80\u4f53"])
+        font.setPointSize(16)
+        font.setBold(False)
         self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet(u"   QPushButton {\n"
-"       border-width: 0px;\n"
-"       border-style: none;\n"
-"       border-color: transparent;\n"
-"	   color: rgb(255, 255, 255);\n"
-"	   background-color: rgb(65, 168, 99);\n"
-"   }")
+        self.pushButton_3.setStyleSheet(u"QPushButton {\n"
+"    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
+"    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
+"	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
+"}\n"
+"")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/images/\u8868\u683c.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton_3.setIcon(icon1)
+        self.pushButton_3.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_2.addWidget(self.pushButton_3)
-
-        self.pushButton_4 = QPushButton(self.centralwidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(200, 50))
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet(u"   QPushButton {\n"
-"       border-width: 0px;\n"
-"       border-style: none;\n"
-"       border-color: transparent;\n"
-"	   color: rgb(255, 255, 255);\n"
-"	   background-color: rgb(65, 168, 99);\n"
-"   }")
-
-        self.verticalLayout_2.addWidget(self.pushButton_4)
-
-        self.pushButton_5 = QPushButton(self.centralwidget)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setMinimumSize(QSize(200, 50))
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setStyleSheet(u"   QPushButton {\n"
-"       border-width: 0px;\n"
-"       border-style: none;\n"
-"       border-color: transparent;\n"
-"	   color: rgb(255, 255, 255);\n"
-"	   background-color: rgb(65, 168, 99);\n"
-"   }")
-
-        self.verticalLayout_2.addWidget(self.pushButton_5)
-
-        self.pushButton_6 = QPushButton(self.centralwidget)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setMinimumSize(QSize(200, 50))
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setStyleSheet(u"   QPushButton {\n"
-"       border-width: 0px;\n"
-"       border-style: none;\n"
-"       border-color: transparent;\n"
-"	   color: rgb(255, 255, 255);\n"
-"	   background-color: rgb(65, 168, 99);\n"
-"   }")
-
-        self.verticalLayout_2.addWidget(self.pushButton_6)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_2.addItem(self.verticalSpacer)
-
-
-        self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_3, 0, 0, 1, 1)
 
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
@@ -350,7 +303,10 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.label = QLabel(self.stackedWidgetPage2)
         self.label.setObjectName(u"label")
-        self.label.setFont(font)
+        font2 = QFont()
+        font2.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font2.setPointSize(10)
+        self.label.setFont(font2)
         self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
@@ -368,7 +324,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.label_2 = QLabel(self.stackedWidgetPage3)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font)
+        self.label_2.setFont(font2)
         self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.gridLayout_4.addWidget(self.label_2, 0, 0, 1, 1)
@@ -380,19 +336,77 @@ class Ui_MainWindow(object):
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.label_3 = QLabel(self.stackedWidgetPage4)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font)
+        self.label_3.setFont(font2)
         self.label_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.gridLayout_5.addWidget(self.label_3, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.stackedWidgetPage4)
 
-        self.gridLayout.addWidget(self.stackedWidget, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.stackedWidget, 0, 1, 6, 1)
+
+        self.pushButton_5 = QPushButton(self.centralwidget)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setMinimumSize(QSize(180, 50))
+        font3 = QFont()
+        font3.setFamilies([u"\u65b9\u6b63\u7c97\u9ed1\u5b8b\u7b80\u4f53"])
+        font3.setPointSize(16)
+        self.pushButton_5.setFont(font3)
+        self.pushButton_5.setStyleSheet(u"QPushButton {\n"
+"    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
+"    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
+"	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
+"}\n"
+"")
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/images/\u63d2\u4ef6.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton_5.setIcon(icon2)
+        self.pushButton_5.setIconSize(QSize(32, 32))
+
+        self.gridLayout.addWidget(self.pushButton_5, 1, 0, 1, 1)
+
+        self.pushButton_4 = QPushButton(self.centralwidget)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setMinimumSize(QSize(180, 50))
+        self.pushButton_4.setFont(font3)
+        self.pushButton_4.setStyleSheet(u"QPushButton {\n"
+"    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
+"    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
+"	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
+"}\n"
+"")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/images/\u7cfb\u7edf.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton_4.setIcon(icon3)
+        self.pushButton_4.setIconSize(QSize(32, 32))
+
+        self.gridLayout.addWidget(self.pushButton_4, 2, 0, 1, 1)
+
+        self.pushButton_6 = QPushButton(self.centralwidget)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMinimumSize(QSize(180, 50))
+        self.pushButton_6.setFont(font3)
+        self.pushButton_6.setStyleSheet(u"QPushButton {\n"
+"    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
+"    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
+"	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
+"}\n"
+"")
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/images/\u8bbe\u7f6e.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton_6.setIcon(icon4)
+        self.pushButton_6.setIconSize(QSize(32, 32))
+
+        self.gridLayout.addWidget(self.pushButton_6, 3, 0, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 269, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 4, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 770, 33))
+        self.menubar.setGeometry(QRect(0, 0, 797, 33))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
         self.menu_2 = QMenu(self.menubar)
@@ -432,10 +446,7 @@ class Ui_MainWindow(object):
         self.action_4.setText(QCoreApplication.translate("MainWindow", u"\u63d2\u4ef6\u4e2d\u5fc3", None))
         self.action_5.setText(QCoreApplication.translate("MainWindow", u"\u4ea4\u6d41\u7fa4", None))
         self.action_6.setText(QCoreApplication.translate("MainWindow", u"\u6700\u65b0\u8f6f\u4ef6\u4e0b\u8f7d", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u8868\u683c", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u7cfb\u7edf\u4fe1\u606f", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\u5546\u5e97", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u" \u8868\u683c", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u9010\u5355\u5143\u683c\u5904\u7406", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"\u4e00\u6b21\u6027\u5904\u7406", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd\u83dc\u5355", None))
@@ -444,6 +455,9 @@ class Ui_MainWindow(object):
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"\u590d\u5236\u5b8c\u6574\u4fe1\u606f", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5546\u5e97\u6b63\u5728\u5f00\u53d1\u4e2d...", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e\u6b63\u5728\u5f00\u53d1\u4e2d...", None))
+        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u" \u63d2\u4ef6", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u" \u7cfb\u7edf", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u" \u8bbe\u7f6e", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6", None))
         self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\u5de5\u5177", None))
         self.menu_3.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u6863\u4e0e\u5e2e\u52a9", None))

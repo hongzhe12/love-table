@@ -2,5 +2,10 @@
        <qresource prefix="/icons">
            <file>images/b1.jpg</file>
            <file>images/logo.ico</file>
+           <file>images/插件.png</file>
+           <file>images/系统.png</file>
+           <file>images/菜单.png</file>
+           <file>images/设置.png</file>
+           <file>images/表格.png</file>
        </qresource>
    </RCC>

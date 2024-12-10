@@ -4,9 +4,10 @@ import sys
 
 import pandas as pd
 import wmi
-from PySide6.QtCore import QSettings, QUrl
-from PySide6.QtGui import QDesktopServices
-from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QMainWindow, QApplication, QWidget
+from PySide6.QtCore import QSettings, QUrl, QPropertyAnimation, QEasingCurve, QRect, QSize
+from PySide6.QtGui import QDesktopServices, QIcon
+from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QMainWindow, QApplication, QWidget, QFrame, \
+    QVBoxLayout, QPushButton, QSpacerItem, QSizePolicy
 
 from ui_form import Ui_MainWindow
 from functools import partial
@@ -120,10 +121,77 @@ class MyMainWindow(QMainWindow):
         self.ui.pushButton_5.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
         self.ui.pushButton_6.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(3))
 
+
+
         # 获取系统信息
         sys_info = get_windows_system_info()
         self.ui.label.setText(sys_info)
         self.ui.pushButton_7.clicked.connect(self.copy_sys_info)
+
+        # ------------------ 新增抽屉式侧边栏部分 ---------------------
+        # 创建抽屉式侧边栏
+        self.drawer = QFrame(self)
+        self.drawer.setStyleSheet("background-color: #DCDCDC;")
+        self.drawer.setGeometry(-200, 0, 200, self.height())  # 初始位置在视图外面
+        self.drawer_layout = QVBoxLayout(self.drawer)
+
+        # 向侧边栏添加内容（按钮等）
+        # self.drawer_layout.addWidget(QPushButton("Home"))
+        # self.drawer_layout.addWidget(QPushButton("Settings"))
+        # self.drawer_layout.addWidget(QPushButton("About"))
+
+        self.drawer_layout.addWidget(self.ui.pushButton_3)
+        self.drawer_layout.addWidget(self.ui.pushButton_4)
+        self.drawer_layout.addWidget(self.ui.pushButton_5)
+        self.drawer_layout.addWidget(self.ui.pushButton_6)
+
+
+        # 创建一个垂直方向起间隔作用的QWidget（本质利用其空白占位达到间隔效果）
+        verticalSpacerWidget = QWidget()
+        verticalSpacerWidget.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.drawer_layout.addWidget(verticalSpacerWidget)
+
+
+
+        # 创建一个按钮，用于切换侧边栏
+        self.toggle_button = QPushButton("", self)
+        self.toggle_button.setGeometry(730, 0, 50, 50)  # 按钮的位置
+        self.toggle_button.setStyleSheet("""
+            QPushButton {
+                border: none;  /* 去掉边框 */
+                background: transparent;  /* 背景透明 */
+                background-position: center;  /* 图标居中显示 */
+            }
+        """)
+        self.toggle_button.setIconSize(QSize(32, 32))
+        self.toggle_button.setIcon(QIcon(":/icons/images/菜单.png"))
+        self.toggle_button.clicked.connect(self.toggle_drawer)
+
+        # 创建动画效果
+        self.animation = QPropertyAnimation(self.drawer, b"geometry")
+        self.animation.setDuration(300)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuad)
+
+        # 绑定收起事件
+        self.ui.pushButton_3.clicked.connect(self.toggle_drawer)
+        self.ui.pushButton_4.clicked.connect(self.toggle_drawer)
+        self.ui.pushButton_5.clicked.connect(self.toggle_drawer)
+        self.ui.pushButton_6.clicked.connect(self.toggle_drawer)
+
+
+    def toggle_drawer(self):
+        """切换侧边栏的展开和收起"""
+        current_pos = self.drawer.geometry().x()
+        if current_pos < 0:
+            # 如果侧边栏在视图外面，展开侧边栏
+            self.animation.setStartValue(QRect(-200, 0, 200, self.height()))
+            self.animation.setEndValue(QRect(0, 0, 200, self.height()))
+        else:
+            # 如果侧边栏已经展开，收起侧边栏
+            self.animation.setStartValue(QRect(0, 0, 200, self.height()))
+            self.animation.setEndValue(QRect(-200, 0, 200, self.height()))
+
+        self.animation.start()
 
     def copy_sys_info(self):
         clipboard = QApplication.clipboard()
