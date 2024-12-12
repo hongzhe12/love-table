@@ -13,24 +13,30 @@
   <property name="windowTitle">
    <string>常用功能</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
+  <widget class="QPushButton" name="pushButton_1">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>88</width>
+     <height>88</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>82</width>
+     <height>82</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">min-width : 80px; /* 最小宽度 */
 min-height : 80px; /* 最小高度 */
 max-width : 200px; /* 最大宽度 */
 max-height : 200px; /* 最大高度 */
@@ -38,225 +44,21 @@ background-position: center;  /*居中显示 */
 background-&gt;attachment:fixed;  /* 固定 */
 background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
 </string>
-     </property>
-     <property name="text">
-      <string>分离数字</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="pushButton_6">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QPushButton" name="pushButton_3">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string>求和</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QPushButton" name="pushButton_7">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string>日期转换</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton_1">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string>转换为大写</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="pushButton_9">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string>转为小写</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="pushButton_8">
-     <property name="minimumSize">
-      <size>
-       <width>82</width>
-       <height>82</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">min-width : 80px; /* 最小宽度 */
-min-height : 80px; /* 最小高度 */
-max-width : 200px; /* 最大宽度 */
-max-height : 200px; /* 最大高度 */
-background-position: center;  /*居中显示 */
-background-&gt;attachment:fixed;  /* 固定 */
-background-repeat: repeat-n; /* 是否重复 repeat-y是重复*/
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-  </layout>
+   </property>
+   <property name="text">
+    <string>转换为大写</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>120</y>
+     <width>361</width>
+     <height>291</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

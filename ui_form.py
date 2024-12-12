@@ -17,10 +17,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout,
-    QHeaderView, QLabel, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QStatusBar, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
+    QHeaderView, QLabel, QListView, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QStatusBar, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -63,7 +63,12 @@ class Ui_MainWindow(object):
 "    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
 "	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
 "}\n"
-"")
+"QPushButton:hover {\n"
+"                background-color: rgb(0, 170, 127);  /* \u9f20\u6807\u60ac\u505c\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #C0C0C0;  /* \u9f20\u6807\u6309\u4e0b\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }")
         icon1 = QIcon()
         icon1.addFile(u":/icons/images/\u8868\u683c.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.pushButton_3.setIcon(icon1)
@@ -252,27 +257,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.checkBox_2)
 
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.pushButton_2 = QPushButton(self.stackedWidgetPage1)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(81, 51))
-        font1 = QFont()
-        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
-        font1.setPointSize(10)
-        font1.setBold(False)
-        self.pushButton_2.setFont(font1)
-        self.pushButton_2.setStyleSheet(u"   QPushButton {\n"
-"       border-width: 0px;\n"
-"       border-style: none;\n"
-"       border-color: transparent;\n"
-"	   border-radius:8px;\n"
-"	   color: rgb(255, 255, 255);\n"
-"	   background-color: rgb(65, 168, 99);\n"
-"   }")
-
-        self.horizontalLayout_2.addWidget(self.pushButton_2)
-
         self.pushButton = QPushButton(self.stackedWidgetPage1)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(81, 51))
@@ -283,7 +273,13 @@ class Ui_MainWindow(object):
 "	   border-radius:8px;\n"
 "	   color: rgb(255, 255, 255);\n"
 "	   background-color: rgb(65, 168, 99);\n"
-"   }")
+"   }\n"
+"QPushButton:hover {\n"
+"                background-color: #E0E0E0;  /* \u9f20\u6807\u60ac\u505c\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #C0C0C0;  /* \u9f20\u6807\u6309\u4e0b\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }")
 
         self.horizontalLayout_2.addWidget(self.pushButton)
 
@@ -301,33 +297,31 @@ class Ui_MainWindow(object):
         self.stackedWidgetPage2.setObjectName(u"stackedWidgetPage2")
         self.gridLayout_3 = QGridLayout(self.stackedWidgetPage2)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.label = QLabel(self.stackedWidgetPage2)
-        self.label.setObjectName(u"label")
-        font2 = QFont()
-        font2.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
-        font2.setPointSize(10)
-        self.label.setFont(font2)
-        self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
-
-        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
-
         self.pushButton_7 = QPushButton(self.stackedWidgetPage2)
         self.pushButton_7.setObjectName(u"pushButton_7")
         self.pushButton_7.setMinimumSize(QSize(0, 30))
 
         self.gridLayout_3.addWidget(self.pushButton_7, 1, 0, 1, 1)
 
+        self.label = QLabel(self.stackedWidgetPage2)
+        self.label.setObjectName(u"label")
+        font1 = QFont()
+        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font1.setPointSize(10)
+        self.label.setFont(font1)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
+
+        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
+
         self.stackedWidget.addWidget(self.stackedWidgetPage2)
         self.stackedWidgetPage3 = QWidget()
         self.stackedWidgetPage3.setObjectName(u"stackedWidgetPage3")
         self.gridLayout_4 = QGridLayout(self.stackedWidgetPage3)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.label_2 = QLabel(self.stackedWidgetPage3)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font2)
-        self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
+        self.listView = QListView(self.stackedWidgetPage3)
+        self.listView.setObjectName(u"listView")
 
-        self.gridLayout_4.addWidget(self.label_2, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.listView, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.stackedWidgetPage3)
         self.stackedWidgetPage4 = QWidget()
@@ -336,7 +330,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.label_3 = QLabel(self.stackedWidgetPage4)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font2)
+        self.label_3.setFont(font1)
         self.label_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.gridLayout_5.addWidget(self.label_3, 0, 0, 1, 1)
@@ -348,16 +342,21 @@ class Ui_MainWindow(object):
         self.pushButton_5 = QPushButton(self.centralwidget)
         self.pushButton_5.setObjectName(u"pushButton_5")
         self.pushButton_5.setMinimumSize(QSize(180, 50))
-        font3 = QFont()
-        font3.setFamilies([u"\u65b9\u6b63\u7c97\u9ed1\u5b8b\u7b80\u4f53"])
-        font3.setPointSize(16)
-        self.pushButton_5.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"\u65b9\u6b63\u7c97\u9ed1\u5b8b\u7b80\u4f53"])
+        font2.setPointSize(16)
+        self.pushButton_5.setFont(font2)
         self.pushButton_5.setStyleSheet(u"QPushButton {\n"
 "    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
 "    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
 "	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
 "}\n"
-"")
+"QPushButton:hover {\n"
+"                background-color: rgb(0, 170, 127);  /* \u9f20\u6807\u60ac\u505c\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #C0C0C0;  /* \u9f20\u6807\u6309\u4e0b\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }")
         icon2 = QIcon()
         icon2.addFile(u":/icons/images/\u63d2\u4ef6.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.pushButton_5.setIcon(icon2)
@@ -368,13 +367,18 @@ class Ui_MainWindow(object):
         self.pushButton_4 = QPushButton(self.centralwidget)
         self.pushButton_4.setObjectName(u"pushButton_4")
         self.pushButton_4.setMinimumSize(QSize(180, 50))
-        self.pushButton_4.setFont(font3)
+        self.pushButton_4.setFont(font2)
         self.pushButton_4.setStyleSheet(u"QPushButton {\n"
 "    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
 "    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
 "	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
 "}\n"
-"")
+"QPushButton:hover {\n"
+"                background-color: rgb(0, 170, 127);  /* \u9f20\u6807\u60ac\u505c\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #C0C0C0;  /* \u9f20\u6807\u6309\u4e0b\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }")
         icon3 = QIcon()
         icon3.addFile(u":/icons/images/\u7cfb\u7edf.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.pushButton_4.setIcon(icon3)
@@ -385,13 +389,18 @@ class Ui_MainWindow(object):
         self.pushButton_6 = QPushButton(self.centralwidget)
         self.pushButton_6.setObjectName(u"pushButton_6")
         self.pushButton_6.setMinimumSize(QSize(180, 50))
-        self.pushButton_6.setFont(font3)
+        self.pushButton_6.setFont(font2)
         self.pushButton_6.setStyleSheet(u"QPushButton {\n"
 "    border: none;  /* \u53bb\u6389\u8fb9\u6846 */\n"
 "    background: transparent;  /* \u80cc\u666f\u900f\u660e */\n"
 "	background-position: center;  /* \u56fe\u6807\u5c45\u4e2d\u663e\u793a */\n"
 "}\n"
-"")
+"QPushButton:hover {\n"
+"                background-color: rgb(0, 170, 127);  /* \u9f20\u6807\u60ac\u505c\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #C0C0C0;  /* \u9f20\u6807\u6309\u4e0b\u65f6\u80cc\u666f\u989c\u8272 */\n"
+"            }")
         icon4 = QIcon()
         icon4.addFile(u":/icons/images/\u8bbe\u7f6e.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.pushButton_6.setIcon(icon4)
@@ -449,11 +458,9 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u" \u8868\u683c", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u9010\u5355\u5143\u683c\u5904\u7406", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"\u4e00\u6b21\u6027\u5904\u7406", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd\u83dc\u5355", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u91cd\u7f6e\u8868\u683c", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"\u590d\u5236\u5b8c\u6574\u4fe1\u606f", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5546\u5e97\u6b63\u5728\u5f00\u53d1\u4e2d...", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e\u6b63\u5728\u5f00\u53d1\u4e2d...", None))
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u" \u63d2\u4ef6", None))
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u" \u7cfb\u7edf", None))

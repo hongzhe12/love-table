@@ -43,7 +43,12 @@
     background: transparent;  /* 背景透明 */
 	background-position: center;  /* 图标居中显示 */
 }
-</string>
+QPushButton:hover {
+                background-color: rgb(0, 170, 127);  /* 鼠标悬停时背景颜色 */
+            }
+            QPushButton:pressed {
+                background-color: #C0C0C0;  /* 鼠标按下时背景颜色 */
+            }</string>
       </property>
       <property name="text">
        <string> 表格</string>
@@ -266,37 +271,20 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QPushButton" name="pushButton_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>81</width>
-                  <height>51</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>微软雅黑</family>
-                  <pointsize>10</pointsize>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">   QPushButton {
-       border-width: 0px;
-       border-style: none;
-       border-color: transparent;
-	   border-radius:8px;
-	   color: rgb(255, 255, 255);
-	   background-color: rgb(65, 168, 99);
-   }</string>
-                </property>
-                <property name="text">
-                 <string>功能菜单</string>
-                </property>
-               </widget>
-              </item>
               <item>
                <widget class="QPushButton" name="pushButton">
                 <property name="minimumSize">
@@ -313,7 +301,13 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 	   border-radius:8px;
 	   color: rgb(255, 255, 255);
 	   background-color: rgb(65, 168, 99);
-   }</string>
+   }
+QPushButton:hover {
+                background-color: #E0E0E0;  /* 鼠标悬停时背景颜色 */
+            }
+            QPushButton:pressed {
+                background-color: #C0C0C0;  /* 鼠标按下时背景颜色 */
+            }</string>
                 </property>
                 <property name="text">
                  <string>重置表格</string>
@@ -330,6 +324,19 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </widget>
       <widget class="QWidget" name="stackedWidgetPage2">
        <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_7">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>复制完整信息</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="font">
@@ -346,38 +353,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>复制完整信息</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="stackedWidgetPage3">
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>商店正在开发中...</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-          </property>
-         </widget>
+         <widget class="QListView" name="listView"/>
         </item>
        </layout>
       </widget>
@@ -423,7 +404,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
     background: transparent;  /* 背景透明 */
 	background-position: center;  /* 图标居中显示 */
 }
-</string>
+QPushButton:hover {
+                background-color: rgb(0, 170, 127);  /* 鼠标悬停时背景颜色 */
+            }
+            QPushButton:pressed {
+                background-color: #C0C0C0;  /* 鼠标按下时背景颜色 */
+            }</string>
       </property>
       <property name="text">
        <string> 插件</string>
@@ -460,7 +446,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
     background: transparent;  /* 背景透明 */
 	background-position: center;  /* 图标居中显示 */
 }
-</string>
+QPushButton:hover {
+                background-color: rgb(0, 170, 127);  /* 鼠标悬停时背景颜色 */
+            }
+            QPushButton:pressed {
+                background-color: #C0C0C0;  /* 鼠标按下时背景颜色 */
+            }</string>
       </property>
       <property name="text">
        <string> 系统</string>
@@ -497,7 +488,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
     background: transparent;  /* 背景透明 */
 	background-position: center;  /* 图标居中显示 */
 }
-</string>
+QPushButton:hover {
+                background-color: rgb(0, 170, 127);  /* 鼠标悬停时背景颜色 */
+            }
+            QPushButton:pressed {
+                background-color: #C0C0C0;  /* 鼠标按下时背景颜色 */
+            }</string>
       </property>
       <property name="text">
        <string> 设置</string>
